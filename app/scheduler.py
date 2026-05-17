@@ -15,7 +15,7 @@ def scheduled_job() -> None:
 
 def start_scheduler() -> BackgroundScheduler:
     scheduler = BackgroundScheduler()
-    time = os.getenv("HORARIO_VERIFICACAO", "09:00")
+    time = os.getenv("CHECK_TIME", "09:00")
     hour, minute = time.split(":")
     scheduler.add_job(
         scheduled_job,

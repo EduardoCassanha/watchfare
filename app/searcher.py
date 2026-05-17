@@ -51,16 +51,16 @@ def search_flights(origin: str, destination: str, date: str) -> list[Flight]:
 
 def run_search() -> SearchResult:
     outbound_dates = generate_dates(
-        os.getenv("DATA_IDA_INICIO", "2026-12-01"),
-        os.getenv("DATA_IDA_FIM", "2026-12-03"),
+        os.getenv("OUTBOUND_DATE_START", "2026-12-01"),
+        os.getenv("OUTBOUND_DATE_END", "2026-12-03"),
     )
     return_dates = generate_dates(
-        os.getenv("DATA_VOLTA_INICIO", "2027-01-01"),
-        os.getenv("DATA_VOLTA_FIM", "2027-01-03"),
+        os.getenv("INBOUND_DATE_START", "2027-01-01"),
+        os.getenv("INBOUND_DATE_END", "2027-01-03"),
     )
 
-    origin = os.getenv("ORIGEM_IDA", "VCP")
-    destination = os.getenv("DESTINO_IDA", "JPR")
+    origin = os.getenv("ORIGIN_OUTBOUND", "VCP")
+    destination = os.getenv("DESTINATION_OUTBOUND", "JPR")
 
     best_outbound: dict[str, Flight] = {}
     for date in outbound_dates:
@@ -87,7 +87,7 @@ def run_search() -> SearchResult:
 
     combinations.sort(key=lambda c: c.total)
     best_price = combinations[0].total if combinations else 0.0
-    target = float(os.getenv("PRECO_ALVO", "1700"))
+    target = float(os.getenv("TARGET_PRICE", "1700"))
 
     return SearchResult(
         timestamp=datetime.now().strftime("%Y-%m-%d %H:%M"),
