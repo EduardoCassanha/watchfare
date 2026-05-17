@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from app.models import SearchResult
 
-HISTORY_FILE = Path("data/historico.json")
+HISTORY_FILE = Path("data/history.json")
 
 
 def save_result(result: SearchResult) -> None:
