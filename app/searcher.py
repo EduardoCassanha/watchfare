@@ -51,12 +51,12 @@ def search_flights(origin: str, destination: str, date: str) -> list[Flight]:
 
 def run_search() -> SearchResult:
     outbound_dates = generate_dates(
-        os.getenv("DATA_IDA_INICIO", "2025-12-01"),
-        os.getenv("DATA_IDA_FIM", "2025-12-28"),
+        os.getenv("DATA_IDA_INICIO", "2026-12-01"),
+        os.getenv("DATA_IDA_FIM", "2026-12-03"),
     )
     return_dates = generate_dates(
-        os.getenv("DATA_VOLTA_INICIO", "2026-01-01"),
-        os.getenv("DATA_VOLTA_FIM", "2026-01-28"),
+        os.getenv("DATA_VOLTA_INICIO", "2027-01-01"),
+        os.getenv("DATA_VOLTA_FIM", "2027-01-03"),
     )
 
     origin = os.getenv("ORIGEM_IDA", "VCP")
